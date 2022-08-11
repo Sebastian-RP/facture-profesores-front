@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { InstructorsListComponent } from './components/instructors-list/instructors-list.component';
 import { AddInstructorComponent } from './components/add-instructor/add-instructor.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { AddInstructorComponent } from './components/add-instructor/add-instruct
     MatButtonModule,
     RouterModule,
     MatTableModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
