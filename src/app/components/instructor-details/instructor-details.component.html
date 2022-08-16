@@ -1,1 +1,52 @@
-<p>instructor-details works!</p>
+<div class="main-container">
+    <header>
+        <mat-card class="card-header" fxLayoutAlign="start center" fxLayoutGap="5px" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-card-title>
+                <i class="fa-solid fa-chalkboard-user"></i>
+                FACTURE PROFESORES</mat-card-title>
+            <div class="header-right">
+                <a routerLink="/instructores">
+                    <button mat-raised-button>Atras</button>
+                </a>
+            </div>
+        </mat-card>
+    </header>
+    <div class="body-container">
+
+        <div class="table-container" fxLayout="column" fxLayoutAlign="start center" >
+
+            <div class="button-container" fxLayoutAlign="end center">
+                <a routerLink="/agregar-leccion/3">
+                    <button mat-raised-button>
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </a>
+            </div>
+
+            <table mat-table [dataSource]="allLessons" class="mat-elevation-z8 demo-table main-instructors-table">
+                <!-- id Column -->
+                <ng-container matColumnDef="demo-id">
+                  <th mat-header-cell *matHeaderCellDef> No. </th>
+                  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+              
+                <!-- lessonDate Column -->
+                <ng-container matColumnDef="demo-lessonDate">
+                  <th mat-header-cell *matHeaderCellDef> Fecha de la clase </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lessonDate}}</td>
+                </ng-container>
+              
+                <!-- Weight Column -->
+                <ng-container matColumnDef="demo-durationLeson">
+                  <th mat-header-cell *matHeaderCellDef> Duracion de la clase </th>
+                  <td mat-cell *matCellDef="let element"> {{element.durationLesson}} - min</td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              
+        </div>
+
+    </div>
+</div>

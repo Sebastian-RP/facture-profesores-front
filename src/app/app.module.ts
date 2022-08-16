@@ -22,7 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-import { InstructorDetailsComponent } from './components/instructor-details/instructor-details.component'; 
+import { InstructorDetailsComponent } from './components/instructor-details/instructor-details.component';
+import { AddLessonComponent } from './components/add-lesson/add-lesson.component'; 
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { InstructorDetailsComponent } from './components/instructor-details/inst
     LandingComponent,
     InstructorsListComponent,
     AddInstructorComponent,
-    InstructorDetailsComponent
+    InstructorDetailsComponent,
+    AddLessonComponent
   ],
   imports: [
     BrowserModule,
