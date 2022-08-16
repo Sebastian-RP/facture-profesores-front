@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InstructorsListService } from 'src/app/Services/instructors-list.service';
 
 export interface PeriodicElement {
   name: string;
@@ -22,7 +23,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 10, name: 'Lucas Miller', uin: 20.1797, type: 'Extranjero', currency:'US', price: 8.3},
 ];
 
-
+// id, name, typeInstructor, typeCurrency, priceHour
 
 @Component({
   selector: 'app-instructors-list',
@@ -31,12 +32,18 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class InstructorsListComponent implements OnInit {
 
-  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-uin', 'demo-type', 'demo-currency', 'demo-price'];
-  dataSource = ELEMENT_DATA;
+  allInstructors: any = [];
 
-  constructor() { }
+  displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-uin', 'demo-type', 'demo-currency', 'demo-price'];
+  dataSource = this.allInstructors;
+
+  constructor(private service: InstructorsListService) { }
 
   ngOnInit(): void {
+    this.service.getAllInstructors().subscribe(instructors => {
+      this.allInstructors = instructors.response;
+      console.log(this.allInstructors);
+    })
   }
 
 }
