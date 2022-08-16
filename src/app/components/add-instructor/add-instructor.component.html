@@ -43,12 +43,6 @@
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
                             <button mat-raised-button class="date-button" (click)="picker.open()">Open</button>
-                              
-            
-                            <!-- <mat-form-field>
-                                <mat-label>local o extranjero</mat-label>
-                                <input matInput formControlName="typeInstructor">
-                            </mat-form-field> -->
 
                             <mat-form-field class="select-nacionalidad" appearance="fill">
                                 <mat-label>Nacionalidad del docente</mat-label>
@@ -57,11 +51,12 @@
                                   <mat-option value="exranjero">Exranjero</mat-option>
                                 </mat-select>
                             </mat-form-field>
-                              
-    
-                            <mat-form-field>
-                                <mat-label>Tipo de moneda</mat-label>
-                                <input matInput formControlName="typeCurrency">
+
+                            <mat-form-field appearance="fill">
+                                <mat-label> Moneda de cambio </mat-label>
+                                <mat-select formControlName="typeCurrency">
+                                  <mat-option *ngFor="let code of currencyCodes" [value]="code[0]">{{code[1]}}</mat-option>
+                                </mat-select>
                             </mat-form-field>
             
                             <mat-form-field>

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DialogAddedElementComponent } from '../dialog-added-element/dialog-added-element.component';
 import { MatDialog } from '@angular/material/dialog';
+import { AddInstructorService } from 'src/app/Services/AddInstructor/add-instructor.service';
 
 @Component({
   selector: 'app-add-instructor',
@@ -15,12 +16,26 @@ export class AddInstructorComponent implements OnInit {
 
   public instructorsForm!: FormGroup;
 
-  constructor(private http: HttpClient, private matDialog: MatDialog) { }
+  currencyCodes: any = [];
+
+  states: string[] = [
+    'Alabama',
+    'Alaska',
+    'Arizona',
+    'Arkansas',
+  ];
+
+  constructor(private http: HttpClient, private matDialog: MatDialog, private service: AddInstructorService) { }
 
   ngOnInit(): void {
     this.buildForm();
     this.submit();
     this.ActiveButton();
+
+    this.service.getAllCodes().subscribe(codeCountry => {
+      this.currencyCodes = codeCountry.supported_codes;
+      console.log(this.currencyCodes);
+    })
   }
 
   buildForm() {
@@ -36,7 +51,7 @@ export class AddInstructorComponent implements OnInit {
 
   ActiveButton(){//si algun campo no cumple no permite enviar
     if (this.instructorsForm.status === "INVALID") {
-      return false
+      return false //
     }else{
       return true
     }
@@ -47,14 +62,11 @@ export class AddInstructorComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.instructorsForm);
-    
+    console.log(this.instructorsForm.value);
     this.http.post(this.URL_NEW_INSTRUCTOR, this.instructorsForm.value) //funciona creacion de instructor
     .subscribe((res) => {
       console.log(res);
       this.onOpenDialogClick();
     })
-
-    // this.resetForm();    
   }
 }
