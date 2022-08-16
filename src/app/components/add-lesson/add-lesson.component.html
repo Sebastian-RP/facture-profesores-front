@@ -23,23 +23,24 @@
                     <form [formGroup]="LessonsForm" (ngSubmit)="submit()">
                         <div fxLayout="row" fxLayout="column" fxLayoutGap="25px" fxLayoutGap="5px">
             
-                            <mat-form-field class="example-full-width" appearance="fill">
+                            <!-- <mat-form-field class="example-full-width" appearance="fill">
                                 <mat-label>Fecha de la clase</mat-label>
                                 <input matInput [matDatepicker]="picker" formControlName="lessonDate" >
                                 <mat-hint>MM/DD/YYYY</mat-hint>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
-                            <button mat-raised-button class="date-button" (click)="picker.open()">Open</button>
+                            <button mat-raised-button class="date-button" (click)="picker.open()">Open</button> -->
+
+                            <mat-form-field>
+                                <mat-label>Fecha de la clase MM/DD/AAAA</mat-label>
+                                <input matInput formControlName="lessonDate">
+                            </mat-form-field>
     
                             <mat-form-field>
                                 <mat-label>Duracion de la clase(min)</mat-label>
                                 <input matInput formControlName="durationLesson">
                             </mat-form-field>
             
-                            <!-- <mat-form-field>
-                                <mat-label>Tarifa por hora</mat-label>
-                                <input matInput formControlName="priceHour">
-                            </mat-form-field> -->
                         </div>
                         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="25px" fxLayoutAling="end">
                             <button mat-raised-button type="submit" [disabled]="!ActiveButton()">Crear</button>

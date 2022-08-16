@@ -13,6 +13,12 @@ export class AddLessonComponent implements OnInit {
   private URL_NEW_LESSON: string = "http://localhost:5289/api/Lesson/Guardar"; 
   
   public idParam: number = 0;
+
+  public sendData = {
+    lessonDate: "",
+    durationLesson: 0,
+    instructorId: 0
+  }
   public LessonsForm!: FormGroup;
 
   constructor(private activateRoute: ActivatedRoute, private http: HttpClient) { 
@@ -37,7 +43,7 @@ export class AddLessonComponent implements OnInit {
 
   ActiveButton(){//si algun campo no cumple no permite enviar
     if (this.LessonsForm.status === "INVALID") {
-      return false
+      return true // 
     }else{
       return true
     }
@@ -47,12 +53,15 @@ export class AddLessonComponent implements OnInit {
     console.log(this.LessonsForm);
     this.LessonsForm.value.instructorId = this.idParam;
 
-    this.http.post(this.URL_NEW_LESSON, this.LessonsForm.value) //funciona creacion de instructor
+    this.sendData.instructorId = this.idParam;
+    this.sendData.durationLesson =  this.LessonsForm.value.durationLesson;
+    this.sendData.lessonDate = this.LessonsForm.value.lessonDate;
+    //this.sendData.lessonDate = "08/10/2022";
+
+    this.http.post(this.URL_NEW_LESSON, this.sendData) //funciona creacion de instructor
     .subscribe((res) => {
       console.log(res);
     })
-
-    console.log(this.LessonsForm.value);
   }
 
 }
