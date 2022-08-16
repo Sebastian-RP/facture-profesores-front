@@ -55,7 +55,7 @@
                             <mat-form-field appearance="fill">
                                 <mat-label> Moneda de cambio </mat-label>
                                 <mat-select formControlName="typeCurrency" [disabled]="activeSelectCodes()">
-                                  <mat-option *ngFor="let code of currencyCodes" [value]="code[0]">{{code[1]}}</mat-option>
+                                    <mat-option *ngFor="let code of currencyCodes" [value]="code[0]">{{code[1]}}</mat-option>
                                 </mat-select>
                             </mat-form-field>
             

@@ -76,10 +76,10 @@ export class AddInstructorComponent implements OnInit {
 
   submit(){
     console.log(this.instructorsForm.value);
-    // this.http.post(this.URL_NEW_INSTRUCTOR, this.instructorsForm.value) //funciona creacion de instructor
-    // .subscribe((res) => {
-    //   console.log(res);
-    //   this.onOpenDialogClick();
-    // })
+    this.http.post(this.URL_NEW_INSTRUCTOR, this.instructorsForm.value) //funciona creacion de instructor
+    .subscribe((res) => {
+      console.log(res);
+      this.onOpenDialogClick();
+    })
   }
 }
