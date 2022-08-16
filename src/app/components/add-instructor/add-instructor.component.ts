@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core'; 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DialogAddedElementComponent } from '../dialog-added-element/dialog-added-element.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-instructor',
@@ -13,7 +15,7 @@ export class AddInstructorComponent implements OnInit {
 
   public instructorsForm!: FormGroup;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -40,12 +42,17 @@ export class AddInstructorComponent implements OnInit {
     }
   }
 
+  onOpenDialogClick(){
+    this.matDialog.open(DialogAddedElementComponent);
+  }
+
   submit(){
     console.log(this.instructorsForm);
     
     this.http.post(this.URL_NEW_INSTRUCTOR, this.instructorsForm.value) //funciona creacion de instructor
     .subscribe((res) => {
       console.log(res);
+      this.onOpenDialogClick();
     })
 
     // this.resetForm();    

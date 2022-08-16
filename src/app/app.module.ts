@@ -23,7 +23,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { InstructorDetailsComponent } from './components/instructor-details/instructor-details.component';
-import { AddLessonComponent } from './components/add-lesson/add-lesson.component'; 
+import { AddLessonComponent } from './components/add-lesson/add-lesson.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogAddedElementComponent } from './components/dialog-added-element/dialog-added-element.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AddLessonComponent } from './components/add-lesson/add-lesson.component
     InstructorsListComponent,
     AddInstructorComponent,
     InstructorDetailsComponent,
-    AddLessonComponent
+    AddLessonComponent,
+    DialogAddedElementComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { AddLessonComponent } from './components/add-lesson/add-lesson.component
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

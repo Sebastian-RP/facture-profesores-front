@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddedElementComponent } from '../dialog-added-element/dialog-added-element.component';
 
 @Component({
   selector: 'app-add-lesson',
@@ -21,7 +23,7 @@ export class AddLessonComponent implements OnInit {
   }
   public LessonsForm!: FormGroup;
 
-  constructor(private activateRoute: ActivatedRoute, private http: HttpClient) { 
+  constructor(private activateRoute: ActivatedRoute, private http: HttpClient, private matDialog: MatDialog) { 
     this.activateRoute.params.subscribe(params => {
       this.idParam = params["idInstructor"];
       console.log(this.idParam);
@@ -37,16 +39,20 @@ export class AddLessonComponent implements OnInit {
   buildForm() {
     this.LessonsForm = new FormGroup({
       lessonDate: new FormControl('', [Validators.required]), 
-      durationLesson: new FormControl('', [Validators.required]),
+      durationLesson: new FormControl('', [Validators.required, Validators.pattern(new RegExp('^[0-9,$]*$'))]),
     })
   }
 
   ActiveButton(){//si algun campo no cumple no permite enviar
     if (this.LessonsForm.status === "INVALID") {
-      return true // 
+      return false // 
     }else{
       return true
     }
+  }
+
+  onOpenDialogClick(){
+    this.matDialog.open(DialogAddedElementComponent);
   }
 
   submit(){
@@ -61,7 +67,10 @@ export class AddLessonComponent implements OnInit {
     this.http.post(this.URL_NEW_LESSON, this.sendData) //funciona creacion de instructor
     .subscribe((res) => {
       console.log(res);
+      this.onOpenDialogClick();
     })
+
+    console.log(this.sendData);
   }
 
 }
