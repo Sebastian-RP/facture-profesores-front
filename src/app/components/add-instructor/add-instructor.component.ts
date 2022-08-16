@@ -44,14 +44,27 @@ export class AddInstructorComponent implements OnInit {
       id: new FormControl('', [Validators.pattern(new RegExp('^[0-9,$]*$')), Validators.required]),
       dateBirth: new FormControl('', [Validators.required]), 
       typeInstructor: new FormControl('', [Validators.required]),
-      typeCurrency: new FormControl('', [Validators.required]),
+      typeCurrency: new FormControl('COP', [Validators.required]),
       priceHour: new FormControl('', [Validators.pattern(new RegExp('^[0-9,$]*$')), Validators.required]),
     })
   }
 
+  //desactiva select con las monedas
+  activeSelectCodes(){
+    if (this.instructorsForm.value.typeInstructor === 'exranjero') {
+      return false
+    }else{
+      //si es local = moneda colombiana
+      this.instructorsForm.value.typeCurrency = "COP";
+      console.log(this.instructorsForm.value);
+      
+      return true
+    }
+  }
+
   ActiveButton(){//si algun campo no cumple no permite enviar
     if (this.instructorsForm.status === "INVALID") {
-      return false //
+      return true //
     }else{
       return true
     }
@@ -63,10 +76,10 @@ export class AddInstructorComponent implements OnInit {
 
   submit(){
     console.log(this.instructorsForm.value);
-    this.http.post(this.URL_NEW_INSTRUCTOR, this.instructorsForm.value) //funciona creacion de instructor
-    .subscribe((res) => {
-      console.log(res);
-      this.onOpenDialogClick();
-    })
+    // this.http.post(this.URL_NEW_INSTRUCTOR, this.instructorsForm.value) //funciona creacion de instructor
+    // .subscribe((res) => {
+    //   console.log(res);
+    //   this.onOpenDialogClick();
+    // })
   }
 }

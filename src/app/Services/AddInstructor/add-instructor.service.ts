@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddInstructorService {
 
+  // personal_key from https://www.exchangerate-api.com/
   private PERSONAL_KEY = "5f5c0bc22c0e6c805f6f02c3";
 
   private URL_CURRENCY_CODES = "https://v6.exchangerate-api.com/v6/"+this.PERSONAL_KEY+"/codes"
