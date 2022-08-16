@@ -19,6 +19,9 @@ import { MatTableModule } from '@angular/material/table';
 import { InstructorsListComponent } from './components/instructors-list/instructors-list.component';
 import { AddInstructorComponent } from './components/add-instructor/add-instructor.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker'; 
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select'; 
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     FormsModule, 
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
