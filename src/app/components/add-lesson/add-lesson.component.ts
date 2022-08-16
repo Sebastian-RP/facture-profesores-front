@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-lesson',
@@ -7,9 +10,49 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddLessonComponent implements OnInit {
 
-  constructor() { }
+  private URL_NEW_LESSON: string = "http://localhost:5289/api/Lesson/Guardar"; 
+  
+  public idParam: number = 0;
+  public LessonsForm!: FormGroup;
+
+  constructor(private activateRoute: ActivatedRoute, private http: HttpClient) { 
+    this.activateRoute.params.subscribe(params => {
+      this.idParam = params["idInstructor"];
+      console.log(this.idParam);
+    })
+  }
 
   ngOnInit(): void {
+    this.buildForm();
+    this.ActiveButton();
+    this.submit();
+  }
+  
+  buildForm() {
+    this.LessonsForm = new FormGroup({
+      lessonDate: new FormControl('', [Validators.required]), 
+      durationLesson: new FormControl('', [Validators.required]),
+    })
+  }
+
+  ActiveButton(){//si algun campo no cumple no permite enviar
+    if (this.LessonsForm.status === "INVALID") {
+      return false
+    }else{
+      return true
+    }
+  }
+
+  submit(){
+    console.log(this.LessonsForm);
+    this.LessonsForm.value.instructorId = this.idParam;
+
+    this.http.post(this.URL_NEW_LESSON, this.LessonsForm.value) //funciona creacion de instructor
+    .subscribe((res) => {
+      console.log(res);
+    })
+
+    console.log(this.LessonsForm.value);
   }
 
 }
