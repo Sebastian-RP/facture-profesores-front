@@ -21,14 +21,16 @@ import { AddInstructorComponent } from './components/add-instructor/add-instruct
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker'; 
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatSelectModule } from '@angular/material/select'; 
+import { MatSelectModule } from '@angular/material/select';
+import { InstructorDetailsComponent } from './components/instructor-details/instructor-details.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     InstructorsListComponent,
-    AddInstructorComponent
+    AddInstructorComponent,
+    InstructorDetailsComponent
   ],
   imports: [
     BrowserModule,
