@@ -8,10 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class InstructorsListService {
 
   private API_INSTRUCTORES = 'http://localhost:5289/api/Instructor/Lista';
+  private INSTRUCTORES_HORASxMES = 'http://localhost:5289/api/MonthlyHours/lista';
 
   constructor(private http: HttpClient) { }
 
   public getAllInstructors(): Observable<any>{
-    return this.http.get(this.API_INSTRUCTORES);
+    return this.http.get(this.INSTRUCTORES_HORASxMES);
   }
 }
