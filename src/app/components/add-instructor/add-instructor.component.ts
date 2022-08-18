@@ -64,7 +64,7 @@ export class AddInstructorComponent implements OnInit {
 
   ActiveButton(){//si algun campo no cumple no permite enviar
     if (this.instructorsForm.status === "INVALID") {
-      return true //
+      return false //
     }else{
       return true
     }
