@@ -48,7 +48,4 @@ export class InstructorDetailsComponent implements OnInit {
       console.log(lessons.response);
     })
   }
-
-  
-
 }

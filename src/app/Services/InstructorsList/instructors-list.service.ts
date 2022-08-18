@@ -7,6 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InstructorsListService {
 
+  private PERSONAL_KEY = "5f5c0bc22c0e6c805f6f02c3";
+
+  private urlConvertCurrency: string = "https://v6.exchangerate-api.com/v6/"+this.PERSONAL_KEY+"/pair/";
+
   private API_INSTRUCTORES = 'http://localhost:5289/api/Instructor/Lista';
   private INSTRUCTORES_HORASxMES = 'http://localhost:5289/api/MonthlyHours/lista';
 
@@ -14,5 +18,9 @@ export class InstructorsListService {
 
   public getAllInstructors(): Observable<any>{
     return this.http.get(this.INSTRUCTORES_HORASxMES);
+  }
+
+  public convertToCOP(toConvert: string, totalValue: number):  Observable<any>{
+    return this.http.get(this.urlConvertCurrency+toConvert+"/COP/"+totalValue);
   }
 }
