@@ -20,6 +20,7 @@ export class InstructorsListService {
     return this.http.get(this.INSTRUCTORES_HORASxMES);
   }
 
+  // convertir la moneda extranjera a pesos  colombianos y el monto a convertir
   public convertToCOP(toConvert: string, totalValue: number):  Observable<any>{
     return this.http.get(this.urlConvertCurrency+toConvert+"/COP/"+totalValue);
   }

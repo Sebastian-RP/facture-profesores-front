@@ -9,23 +9,15 @@ import { InstructorsListService } from 'src/app/Services/InstructorsList/instruc
 export class InstructorsListComponent implements OnInit {
 
   allInstructors: any = [];
-  allInstructorsLessons: any;
 
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-uin', 'demo-type', 'demo-currency', 'demo-price', 'demo-honorario'];
   dataSource = this.allInstructors;
 
   constructor(private service: InstructorsListService) { }
 
-  // convertToCOP(toConvert: string, totalValue: number){
-  //   this.service.convertToCOP(toConvert, totalValue).subscribe(value => {
-  //     return value.conversion_result;
-  //   })
-  // }
-
   convertToCOP(){
     for (let i = 0; i < this.allInstructors.length; i++) {
-      this.service.convertToCOP(this.allInstructors[i].typeCurrency, this.allInstructors[i].priceHour).subscribe(value => {
-        //calculo el pago del mes segun horas trabajadas y conversion de su moneda a la colombiana
+      this.service.convertToCOP(this.allInstructors[i].typeCurrency, (this.allInstructors[i].priceHour*this.allInstructors[i].durationLesson)).subscribe(value => {
         this.allInstructors[i].monthlyPayment = value.conversion_result.toFixed(2)
         return value.conversion_result;
       })
