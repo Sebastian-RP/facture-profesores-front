@@ -6,6 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+Bakend url = https://github.com/Sebastian-RP/ProfesoresApiDotnet.git
+
 
 ![Landing](https://user-images.githubusercontent.com/55423389/185814512-95611d9a-b056-4f7e-abb5-099e68b08607.PNG)
 ![InstructorsList](https://user-images.githubusercontent.com/55423389/185814515-03411aaf-74ce-47ca-a1c7-7efe00e3a0ed.PNG)
